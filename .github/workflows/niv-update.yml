@@ -2,9 +2,7 @@ name: "niv update"
 on:
   workflow_dispatch:
   schedule:
-    # * is a special character in YAML so you have to quote this string
-    # run this every day at 4:00am
-    - cron:  '0 4 * * *'
+    - cron:  '0 */4 * * *' # https://crontab.guru/#0_*/4_*_*_*
 permissions:
   contents: write
   pull-requests: write
