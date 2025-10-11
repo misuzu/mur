@@ -27,7 +27,7 @@ jobs:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Set nixpkgs flake reference
       run: |
-        nix registry add nixpkgs github:NixOS/nixpkgs/nixos-unstable
+        nix registry add nixpkgs github:NixOS/nixpkgs/nixos-unstable-small
     - name: Setup Attic cache
       uses: ryanccn/attic-action@v0
       with:

@@ -22,7 +22,7 @@ jobs:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Set nixpkgs flake reference
         run: |
-          nix registry add nixpkgs github:NixOS/nixpkgs/nixos-unstable
+          nix registry add nixpkgs github:NixOS/nixpkgs/nixos-unstable-small
       - name: Get packages
         id: get-packages
         run: |
@@ -47,7 +47,7 @@ jobs:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Set nixpkgs flake reference
         run: |
-          nix registry add nixpkgs github:NixOS/nixpkgs/nixos-unstable
+          nix registry add nixpkgs github:NixOS/nixpkgs/nixos-unstable-small
       - uses: actions/create-github-app-token@v2
         id: app-token
         with:

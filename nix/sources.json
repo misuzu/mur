@@ -1,6 +1,6 @@
 {
     "nixpkgs": {
-        "branch": "nixos-unstable",
+        "branch": "nixos-unstable-small",
         "description": "Nix Packages collection & NixOS",
         "homepage": "",
         "owner": "NixOS",
