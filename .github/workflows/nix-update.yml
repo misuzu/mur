@@ -2,7 +2,7 @@ name: "nix-update"
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */2 * * *' # https://crontab.guru/#0_*/2_*_*_*
+    - cron: '0 16 * * *' # https://crontab.guru/#0_16_*_*_*
 permissions:
   contents: write
   pull-requests: write
