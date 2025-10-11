@@ -2,7 +2,7 @@ name: "niv update"
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '0 */4 * * *' # https://crontab.guru/#0_*/4_*_*_*
+    - cron:  '0 */8 * * *' # https://crontab.guru/every-8-hours
 permissions:
   contents: write
   pull-requests: write
