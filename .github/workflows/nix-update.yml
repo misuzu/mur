@@ -33,6 +33,7 @@ jobs:
     needs: get-packages
     strategy:
       fail-fast: false
+      max-parallel: 2
       matrix:
         package: ${{ fromJson(needs.get-packages.outputs.matrix) }}
     runs-on: ubuntu-latest
