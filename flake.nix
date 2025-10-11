@@ -15,14 +15,21 @@
             value = f system;
           }) systems
         );
-    in
-    {
-      checks = forAllSystems (system: inputs.self.packages.${system});
-      nixosModules = (import ./nixos/default.nix) // {
+      nixosModules = {
         overlay = {
           nixpkgs.overlays = [ inputs.self.overlays.default ];
         };
-      };
+      }
+      // import ./nixos/default.nix;
+    in
+    {
+      checks = forAllSystems (system: inputs.self.packages.${system});
+      nixosModules = {
+        default = {
+          imports = builtins.attrValues nixosModules;
+        };
+      }
+      // nixosModules;
       overlays.default = import ./pkgs/overlay.nix;
       packages = forAllSystems (
         system:
