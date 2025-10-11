@@ -15,7 +15,7 @@
             value = f system;
           }) systems
         );
-      nixosModules = {
+      defaultNixosModules = {
         overlay = {
           nixpkgs.overlays = [ inputs.self.overlays.default ];
         };
@@ -26,10 +26,20 @@
       checks = forAllSystems (system: inputs.self.packages.${system});
       nixosModules = {
         default = {
-          imports = builtins.attrValues nixosModules;
+          imports = builtins.attrValues defaultNixosModules;
+        };
+        cache = {
+          nix.settings = {
+            substituters = [
+              "https://cache.ztier.in"
+            ];
+            trusted-public-keys = [
+              "cache.ztier.link-1:3P5j2ZB9dNgFFFVkCQWT3mh0E+S3rIWtZvoql64UaXM="
+            ];
+          };
         };
       }
-      // nixosModules;
+      // defaultNixosModules;
       overlays.default = import ./pkgs/overlay.nix;
       packages = forAllSystems (
         system:
