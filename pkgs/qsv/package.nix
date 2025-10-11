@@ -78,7 +78,6 @@ rustPlatform.buildRustPackage {
     ];
     mainProgram = mainProgram;
     maintainers = with lib.maintainers; [
-      detroyejr
       misuzu
     ];
   };
