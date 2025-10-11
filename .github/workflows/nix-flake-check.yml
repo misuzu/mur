@@ -1,6 +1,8 @@
 name: "nix flake check"
 on:
   pull_request:
+    branches-ignore:
+      - 'dependabot/github_actions/**'
   push:
     branches:
       - master
