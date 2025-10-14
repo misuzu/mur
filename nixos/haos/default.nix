@@ -5,16 +5,6 @@ let
     x86_64-linux = "pc";
     aarch64-linux = "virt,gic-version=host";
   }.${pkgs.stdenv.hostPlatform.system};
-  haosImage = {
-    x86_64-linux = pkgs.fetchurl {
-      url = "https://github.com/home-assistant/operating-system/releases/download/13.2/haos_ova-13.2.qcow2.xz";
-      hash = "sha256-wMx2yzc12os/vqcvcm+dgO98SEzD1mU8AaXSiH0a9KU=";
-    };
-    aarch64-linux = pkgs.fetchurl {
-      url = "https://github.com/home-assistant/operating-system/releases/download/13.2/haos_generic-aarch64-13.2.qcow2.xz";
-      hash = "sha256-B7is0ikwpbfq9bATcrmc0bjX9THCcufKpDwTDoevz+4=";
-    };
-  }.${pkgs.stdenv.hostPlatform.system};
   cfg = config.services.haos;
 in
 {
@@ -93,7 +83,7 @@ in
 
         disk=disk1.qcow2
         if [ ! -f $disk ]; then
-          xz -dc ${haosImage} > $disk
+          xz -dc ${pkgs.home-assistant-operating-system} > $disk
         fi
 
         exec ${lib.getExe qemuPackage} \
