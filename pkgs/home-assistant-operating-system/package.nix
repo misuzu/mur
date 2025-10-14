@@ -33,6 +33,6 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Home Assistant Operating System";
     homepage = "https://github.com/home-assistant/operating-system";
     license = lib.licenses.asl20;
-    maintainers = with lib.maintainsers; [ misuzu ];
+    maintainers = with lib.maintainers; [ misuzu ];
   };
 })
