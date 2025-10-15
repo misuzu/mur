@@ -34,5 +34,6 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/home-assistant/operating-system";
     license = lib.licenses.asl20;
     maintainers = with lib.maintainers; [ misuzu ];
+    sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
   };
 })
