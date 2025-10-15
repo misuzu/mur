@@ -8,7 +8,7 @@ stdenv.mkDerivation (finalAttrs: {
   version = finalAttrs.passthru.sources.version;
 
   src = fetchurl (
-    finalAttrs.passthru.sources.${stdenv.hostPlatform.system}
+    finalAttrs.passthru.sources.platforms.${stdenv.hostPlatform.system}
       or (throw "Unsupported system: ${stdenv.hostPlatform.system}")
   );
 
@@ -34,6 +34,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/home-assistant/operating-system";
     license = lib.licenses.asl20;
     maintainers = with lib.maintainers; [ misuzu ];
+    platforms = lib.attrNames finalAttrs.passthru.sources.platforms;
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
   };
 })
