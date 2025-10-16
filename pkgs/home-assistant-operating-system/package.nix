@@ -3,29 +3,18 @@
   lib,
   fetchurl,
 }:
-stdenv.mkDerivation (finalAttrs: {
-  pname = "home-assistant-operating-system";
-  version = finalAttrs.passthru.sources.version;
-
-  src = fetchurl (
-    finalAttrs.passthru.sources.platforms.${stdenv.hostPlatform.system}
+let
+  sources = builtins.fromJSON (builtins.readFile ./src.json);
+  drv = fetchurl (
+    sources.platforms.${stdenv.hostPlatform.system}
       or (throw "Unsupported system: ${stdenv.hostPlatform.system}")
   );
-
-  dontPatch = true;
-  dontConfigure = true;
-  dontBuild = true;
-  dontFixup = true;
-  dontUnpack = true;
-
-  installPhase = ''
-    runHook preInstall
-    ln -s $src $out
-    runHook postInstall
-  '';
+in
+drv.overrideAttrs {
+  pname = "home-assistant-operating-system";
+  version = sources.version;
 
   passthru = {
-    sources = builtins.fromJSON (builtins.readFile ./src.json);
     updateScript = ./update.sh;
   };
 
@@ -34,7 +23,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/home-assistant/operating-system";
     license = lib.licenses.asl20;
     maintainers = with lib.maintainers; [ misuzu ];
-    platforms = lib.attrNames finalAttrs.passthru.sources.platforms;
+    platforms = lib.attrNames sources.platforms;
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
   };
-})
+}
