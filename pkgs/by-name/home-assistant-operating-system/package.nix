@@ -14,9 +14,7 @@ drv.overrideAttrs {
   pname = "home-assistant-operating-system";
   version = sources.version;
 
-  passthru = {
-    updateScript = ./update.sh;
-  };
+  passthru.updateScript = ./update.sh;
 
   meta = {
     description = "Home Assistant Operating System";
