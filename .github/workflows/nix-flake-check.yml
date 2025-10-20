@@ -15,7 +15,7 @@ jobs:
         os: [ubuntu-24.04, ubuntu-24.04-arm]
     steps:
     - name: Tailscale
-      uses: tailscale/github-action@v3
+      uses: tailscale/github-action@v4
       with:
         oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
         oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
