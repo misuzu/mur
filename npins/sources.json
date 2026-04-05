@@ -9,9 +9,9 @@
       },
       "branch": "nixos-unstable-small",
       "submodules": false,
-      "revision": "c9971bfbabf2fa3f3b7e6e4cbeaa2abd6295b478",
-      "url": "https://github.com/NixOS/nixpkgs/archive/c9971bfbabf2fa3f3b7e6e4cbeaa2abd6295b478.tar.gz",
-      "hash": "sha256-3XiHDhiNxb2vWI0en8ug7WBMEPj9mcaWcMhaFFfhfJY="
+      "revision": "ff2af6f7ebc6c123603d5689aeea6461290f46b5",
+      "url": "https://github.com/NixOS/nixpkgs/archive/ff2af6f7ebc6c123603d5689aeea6461290f46b5.tar.gz",
+      "hash": "sha256-shlcgEOzW6rl7zmZeYBMP9EpF3O/cTL7/HpWlyqearw="
     }
   },
   "version": 7
