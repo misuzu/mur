@@ -7,7 +7,7 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "slatedb-nbd";
-  version = "0-unstable-2025-08-17";
+  version = "0-unstable-2025-08-18";
 
   src = fetchFromGitHub {
     owner = "john-parton";
