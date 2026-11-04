@@ -2,7 +2,7 @@
   lib,
   buildGoModule,
   fetchFromGitHub,
-  unstableGitUpdater,
+  nix-update-script,
 }:
 
 buildGoModule rec {
@@ -18,7 +18,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-cOjGMHQXQwTY4Kp0Bw69BA1C9CmGfA/cn3+5HOhAhPc=";
 
-  passthru.updateScript = unstableGitUpdater { hardcodeZeroVersion = true; };
+  passthru.updateScript = nix-update-script {
+    extraArgs = [ "--version=branch" ];
+  };
 
   meta = {
     inherit (src.meta) homepage;

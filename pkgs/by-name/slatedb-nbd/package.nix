@@ -2,7 +2,7 @@
   lib,
   fetchFromGitHub,
   rustPlatform,
-  unstableGitUpdater,
+  nix-update-script,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -18,7 +18,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-M1x5NW65Ns4mgHfDPGiDtX27AhE/h+t2gUupN5CrRnA=";
 
-  passthru.updateScript = unstableGitUpdater { hardcodeZeroVersion = true; };
+  passthru.updateScript = nix-update-script {
+    extraArgs = [ "--version=branch" ];
+  };
 
   meta = {
     description = "NBD binding over SlateDB with minimal abstractions";
