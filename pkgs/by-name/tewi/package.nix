@@ -46,6 +46,7 @@ python.pkgs.buildPythonApplication rec {
 
   pythonRelaxDeps = [
     "shtab"
+    "transmission-rpc"
   ];
 
   preBuild = ''
